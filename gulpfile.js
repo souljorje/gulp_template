@@ -28,7 +28,7 @@ gulp.task('browser-sync', function() {
 // Adds prefixes
 gulp.task('styles', function() {
 	return gulp.src('app/sass/**/*.sass')
-		.pipe(sass.on('error', sass.logError))
+		.pipe(sass().on('error', sass.logError))
 		.pipe(prefix('last 2 versions', 'ie 8', 'ie 9'))
 		.pipe(gulp.dest('app/css'))
 		.pipe(browserSync.reload({stream: true}));
