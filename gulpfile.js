@@ -85,7 +85,7 @@ gulp.task('default', ['browser-sync', 'styles'], function(){
 // Parses JS and CSS files in .html 
 // Minifyes JS and CSS(+optimize)
 // Loads to production
-gulp.task('useref', ['styles, fonts'], function(){
+gulp.task('useref', ['styles'], function(){
   return gulp.src('app/*.html')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
@@ -100,5 +100,9 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build', ['clean', 'useref'], function() {
+	var buildFonts = gulp.src('app/fonts/**/*')
+		.pipe(gulp.dest('dist/fonts'))
 
+	var buildimg = gulp.src('app/img/**/*')
+		.pipe(gulp.dest('dist/img'))
 });
